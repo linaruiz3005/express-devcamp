@@ -1,34 +1,53 @@
-exports.getAllBootcamps = (req , res)=>{
+const {DataTypes} = require('sequelize')
+const BootcampModel = require('../models/bootcamp')
+const sequelize = require('../config/seq')
+
+const Bootcamp = BootcampModel(sequelize, DataTypes)
+
+exports.getAllBootcamps = async (req , res)=>{
+    const allBootcamps = await Bootcamp.findAll()
+    console.log(allBootcamps)
     res.status(400).json({
         "seccess" : true,
-        "data" : "Todos los bootcamps"
+        "data" : allBootcamps
     })
 }
 
-exports.getSingleBootcamp = (req , res)=>{
+exports.getSingleBootcamp = async(req , res)=>{
+    const SingleBootcamp = await Bootcamp.findByPk(req.params.id)
     res.status(200).json({
      "seccess" : true,
-     "data" : `Single bootcamp ${req.params.id}`
+     "data" : SingleBootcamp
     })
 }
 
-exports.createBootcamp=(req , res)=>{
+exports.createBootcamp= async (req , res)=>{
+    const newBootcamp = await Bootcamp.create(req.body)
     res.status(201).json({
         "seccess" : true,
-        "data" : "create bootcamp"
+        "data" : newBootcamp
     })
 }
 
-exports.updateBootcamp=(req , res)=>{
+exports.updateBootcamp= async (req , res)=>{
+    await Bootcamp.update(req.body,{
+        where:{
+            id: req.params.id
+        }
+    })
+    const SingleBootcamp = await Bootcamp.findByPk(req.params.id)
     res.status(200).json({
      "seccess" : true,
-     "data" : `update bootcamp ${req.params.id}`
+     "data" : SingleBootcamp
     })
 }
 
-exports.deleteBootcamp = (req , res)=>{
-    res.status(200).json({
-     "seccess" : true,
-     "data" : `delete bootcamp ${req.params.id}`
+exports.deleteBootcamp = async (req,res) => {
+    await Bootcamp.destroy({
+        where: {
+            id: req.params.id
+        }
     })
- }
+    const SingleBootcamp = await Bootcamp.findByPk(req.params.id)
+    res.status(200).json({"success": true, "data": SingleBootcamp})
+}
