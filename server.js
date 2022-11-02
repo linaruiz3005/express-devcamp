@@ -9,6 +9,7 @@ const listEndpoints = require('express-list-endpoints')
 const bootcampRoutes = require('./routes/BootcampRoutes')
 const userRoutes = require('./routes/UserRoutes')
 const courseRoutes = require('./routes/CourseRoute')
+const reviewRoutes = require('./routes/ReviewRoutes')
 
 //definiendo archivo .env
 dotenv.config({
