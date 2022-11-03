@@ -8,7 +8,7 @@ exports.getAllReviews = async (req , res)=>{
     const allReviews = await Review.findAll()
     console.log(allReviews)
     res.status(400).json({
-        "seccess" : true,
+        "success" : true,
         "data" : allReviews
     })
 }
@@ -16,7 +16,7 @@ exports.getAllReviews = async (req , res)=>{
 exports.getSingleReview = async(req , res)=>{
     const getSingleReview = await Review.findByPk(req.params.id)
     res.status(200).json({
-     "seccess" : true,
+     "success" : true,
      "data" : getSingleReview
     })
 }
@@ -24,7 +24,7 @@ exports.getSingleReview = async(req , res)=>{
 exports.createReview= async (req , res)=>{
     const newReview = await Review.create(req.body)
     res.status(201).json({
-        "seccess" : true,
+        "success" : true,
         "data" : newReview
     })
 }
@@ -37,7 +37,7 @@ exports.updateReview= async (req , res)=>{
     })
     const SingleReview = await Review.findByPk(req.params.id)
     res.status(200).json({
-     "seccess" : true,
+     "success" : true,
      "data" : SingleReview
     })
 }

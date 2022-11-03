@@ -8,7 +8,7 @@ exports.getAllBootcamps = async (req , res)=>{
     const allBootcamps = await Bootcamp.findAll()
     console.log(allBootcamps)
     res.status(400).json({
-        "seccess" : true,
+        "success" : true,
         "data" : allBootcamps
     })
 }
@@ -16,7 +16,7 @@ exports.getAllBootcamps = async (req , res)=>{
 exports.getSingleBootcamp = async(req , res)=>{
     const SingleBootcamp = await Bootcamp.findByPk(req.params.id)
     res.status(200).json({
-     "seccess" : true,
+     "success" : true,
      "data" : SingleBootcamp
     })
 }
@@ -24,7 +24,7 @@ exports.getSingleBootcamp = async(req , res)=>{
 exports.createBootcamp= async (req , res)=>{
     const newBootcamp = await Bootcamp.create(req.body)
     res.status(201).json({
-        "seccess" : true,
+        "success" : true,
         "data" : newBootcamp
     })
 }
@@ -37,7 +37,7 @@ exports.updateBootcamp= async (req , res)=>{
     })
     const SingleBootcamp = await Bootcamp.findByPk(req.params.id)
     res.status(200).json({
-     "seccess" : true,
+     "success" : true,
      "data" : SingleBootcamp
     })
 }

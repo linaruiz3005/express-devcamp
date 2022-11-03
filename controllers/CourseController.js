@@ -8,7 +8,7 @@ exports.getAllCourses = async (req , res)=>{
     const allCourses = await Course.findAll()
     console.log(allCourses)
     res.status(400).json({
-        "seccess" : true,
+        "success" : true,
         "data" : allCourses
     })
 }
@@ -16,7 +16,7 @@ exports.getAllCourses = async (req , res)=>{
 exports.getSingleCourse = async(req , res)=>{
     const SingleCourse = await Course.findByPk(req.params.id)
     res.status(200).json({
-     "seccess" : true,
+     "success" : true,
      "data" : SingleCourse
     })
 }
@@ -24,7 +24,7 @@ exports.getSingleCourse = async(req , res)=>{
 exports.createCourse= async (req , res)=>{
     const newCourse = await Course.create(req.body)
     res.status(201).json({
-        "seccess" : true,
+        "success" : true,
         "data" : newCourse
     })
 }
@@ -37,7 +37,7 @@ exports.updateCourse= async (req , res)=>{
     })
     const SingleCourse = await Course.findByPk(req.params.id)
     res.status(200).json({
-     "seccess" : true,
+     "success" : true,
      "data" : SingleCourse
     })
 }
